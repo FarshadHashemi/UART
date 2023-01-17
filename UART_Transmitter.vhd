@@ -13,11 +13,11 @@ Entity UART_Transmitter Is
    ) ;
 
    Port(
-      Clock             : In  STD_Logic ;
-      Input             : In  STD_Logic_Vector(Data_Bits-1 Downto 0) ;
-      Available_Input   : In  STD_Logic ;
-      Output            : Out STD_Logic ;
-      Busy              : Out STD_Logic
+      Clock           : In  STD_Logic ;
+      Input           : In  STD_Logic_Vector(Data_Bits-1 Downto 0) ;
+      Available_Input : In  STD_Logic ;
+      Output          : Out STD_Logic ;
+      Busy            : Out STD_Logic
    ) ;
 
 End UART_Transmitter ;
@@ -38,8 +38,10 @@ Architecture Behavioral Of UART_Transmitter Is
 
 Begin
 
+-- Specify Start Bit And Stop Bits
    Data_Line(Data_Bits+Parity_Enable+Stop_Bits Downto Data_Bits+Parity_Enable+1) <= (Others=>'1') ;
    Data_Line(0) <= '0' ;
+-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
    Process(Clock)
    Begin
